@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "buscabin.h": "c",
+        "stdio.h": "c"
+    }
+}

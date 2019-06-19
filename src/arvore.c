@@ -95,11 +95,11 @@ bool buscaNo(ArvoreBin arvore, int valor)
     if (valor == arvore->valor)
         return true;
 
-    else if (buscaNo(noEsquerdo(arvore), valor))
+    else if (buscaNo(noEsquerdo(arvore), valor)) // a mesma coisa que: buscaNo(arvore->esq, valor)
         return true;
 
     else
-        return buscaNo(noDireito(arvore), valor);
+        return buscaNo(noDireito(arvore), valor); // a mesma coisa que: buscaNo(arvore->dir, valor)
 }
 
 No *insereNoDeBusca(ArvoreBin abb, int valor)
@@ -116,10 +116,171 @@ No *insereNoDeBusca(ArvoreBin abb, int valor)
     return abb;
 }
 
+int maiorValor(ArvoreBin arvore)
+{
+    if (arvore == NULL)
+        return 0;
+
+    int res = arvore->valor;
+    int lres = maiorValor(arvore->esq);
+    int rres = maiorValor(arvore->dir);
+
+    if (lres > res)
+        res = lres;
+    if (rres > res)
+        res = rres;
+    return res;
+}
+
+int menorValor(ArvoreBin arvore)
+{
+    if (arvore == NULL)
+        return 0;
+
+    int res = arvore->valor;
+    int lres = maiorValor(arvore->esq);
+    int rres = maiorValor(arvore->dir);
+
+    if (lres < res)
+        res = lres;
+    if (rres < res)
+        res = rres;
+    return res;
+}
+
+int maiorValorBin(ArvoreBin arvore)
+{
+    ArvoreBin atual = arvore;
+
+    while (atual->dir != NULL)
+        atual = atual->dir;
+
+    return atual->valor;
+}
+
+int menorValorBin(ArvoreBin arvore)
+{
+    ArvoreBin atual = arvore;
+
+    while (atual->esq != NULL)
+        atual = atual->esq;
+
+    return atual->valor;
+}
+
+int buscaPares(ArvoreBin arvore)
+{
+    int num = 0;
+
+    if (arvore == NULL)
+        return num;
+
+    if (arvore->valor % 2 == 0)
+        num = 1;
+
+    return buscaPares(arvore->esq) + num + buscaPares(arvore->dir);
+}
+
 int tamanhoDaArvore(ArvoreBin arvore)
 {
-    if (arvoreVazia(arvore))
+    if (arvoreVazia(arvore)) // ou: if (arvore == NULL)
         return 0;
     else
         return tamanhoDaArvore(noEsquerdo(arvore)) + 1 + tamanhoDaArvore(noDireito(arvore));
 }
+
+int getAltura(ArvoreBin arvore)
+{
+    if (arvore == NULL)
+        return 0;
+
+    int left = getAltura(arvore->esq);
+    int right = getAltura(arvore->dir);
+
+    if (left > right)
+        return 1 + left;
+
+    else
+        return 1 + right;
+}
+
+int diferencaDeAlturas(ArvoreBin arvore) {
+    int altura_esquerda = getAltura(arvore->esq) +1;
+    int altura_direita = getAltura(arvore->dir) +1;
+
+    int maior = 0;
+    int menor = 0;
+
+    if (altura_esquerda > altura_direita) {
+        maior = altura_esquerda;
+        menor = altura_direita;
+    }
+
+    else {
+        maior = altura_direita;
+        menor = altura_esquerda;
+    }
+
+    return maior - menor;
+}
+
+int getTamanhoV1(ArvoreBin arvore)
+{
+    if (arvore == NULL)
+        return 0;
+    else
+        return (1 + getTamanhoV1(arvore->esq) + getTamanhoV1(arvore->dir));
+}
+
+int getTamanhoV2(ArvoreBin arvore)
+{
+    if (arvore == NULL)
+        return 0;
+
+    int tamEsq = getTamanhoV2(arvore->esq);
+    int tamDir = getTamanhoV2(arvore->dir);
+
+    return 1 + tamEsq + tamDir;
+}
+
+void imprimePares(ArvoreBin arvore) {
+    if (!arvoreVazia(arvore)) {
+        if (arvore->valor % 2 == 0) {
+            printf("[ %d ] ", arvore->valor);
+        }
+        imprimePares(noEsquerdo(arvore));
+        imprimePares(noDireito(arvore));
+    }
+}
+
+void imprimePreOrdem(ArvoreBin arvore)
+{
+    if (!arvoreVazia(arvore))
+    {
+        printf("[ %d ] ", arvore->valor);
+        imprimePreOrdem(noEsquerdo(arvore));
+        imprimePreOrdem(noDireito(arvore));
+    }
+}
+
+void imprimeInOrdem(ArvoreBin arvore)
+{
+    if (!arvoreVazia(arvore))
+    {
+        imprimeInOrdem(noEsquerdo(arvore));
+        printf("[ %d ] ", arvore->valor);
+        imprimeInOrdem(noDireito(arvore));
+    }
+}
+
+void imprimePosOrdem(ArvoreBin arvore)
+{
+    if (!arvoreVazia(arvore))
+    {
+        imprimePosOrdem(noEsquerdo(arvore));
+        imprimePosOrdem(noDireito(arvore));
+        printf("[ %d ] ", arvore->valor);
+    }
+}
+
+No *alocaNo() { return (No *)malloc(sizeof(No)); }

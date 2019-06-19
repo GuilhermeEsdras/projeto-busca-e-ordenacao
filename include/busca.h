@@ -26,7 +26,6 @@
 #include <stdio.h>   // Necessaria para realizar operacoes importantes de entrada e saida de dados
 #include <stdlib.h>  // Necessaria para realizar operacoes com alocacao de memoria e ponteiros
 #include <string.h>  // Necessaria para manipulacao de Chars
-#include <locale.h>  // Necessaria para usar setlocale e acentuar palavras em printf's
 #include <stdbool.h> // Necessaria para usar tipo booleano, true e false
 
 /*
@@ -45,12 +44,12 @@
  *      ou -1 caso nao seja encontrado
  * 
  * | Exemplo de Uso |
- *      long int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+ *      int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  *      buscaBinaria(arr, 10, 5);
  *      (Return: 4)
  * 
  */
-int buscaBinaria(long int *vetor, long int tam, long int valorBuscado);
+int buscaBinaria(int *vetor, int tam, int valorBuscado);
 
 /*
  * Funcao: Busca Binaria Recursiva
@@ -69,12 +68,12 @@ int buscaBinaria(long int *vetor, long int tam, long int valorBuscado);
  *      ou -1 caso nao seja encontrado
  * 
  * | Exemplo de Uso |
- *      long int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+ *      int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  *      buscaBinariaRecursiva(arr, 0, 9, 5);
  *      (Return: 4)
  * 
  */
-int buscaBinariaRecursiva(long int *vetor, long int inicio, long int fim, long int valorBuscado);
+int buscaBinariaRecursiva(int *vetor, int inicio, int fim, int valorBuscado);
 
 /*
  * Funcao: Busca Sequencial
@@ -98,39 +97,12 @@ int buscaBinariaRecursiva(long int *vetor, long int inicio, long int fim, long i
  *      ou -1 caso nao seja encontrado
  * 
  * | Exemplo de Uso |
- *      long int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+ *      int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  *      buscaSequencial(arr, 10, 5);
  *      (Return: 4)
  * 
  */
-int buscaSequencial(long int *vetor, long int tam, long int valorBuscado);
-
-/*
- * Funcao: Busca Sequencial Sentinela
- * --------------------
- * | Descricao |
- *      Busca um determinado valor dentro de um array.
- *      Forma otimizada da busca sequencial.
- *      E necessario que o array possua uma posicao vazia no final.
- *      Nao altera a complexidade do algoritmo, mas melhora a velocidade de busca
- *      retirando a comparacao de dentro do laco.
- * 
- * | Parameters |
- *      *vetor: Array de elementos a ser vasculhado
- *      tam: Tamanho do array
- *      valorBuscado: Valor a ser buscado dentro deste array
- * 
- * | returns |
- *      Posicao do elemento buscado (caso seja encontrado), 
- *      ou -1 caso nao seja encontrado
- * 
- * | Exemplo de Uso |
- *      long int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
- *      buscaSequencialSentinela(arr, 10, 5);
- *      (Return: 4)
- * 
- */
-int buscaSequencialSentinela(long int *vetor, long int tam, long int valorBuscado);
+int buscaSequencial(int *vetor, int tam, int valorBuscado);
 
 /*
  * Funcao: Busca Sequencial com Parada
@@ -153,11 +125,38 @@ int buscaSequencialSentinela(long int *vetor, long int tam, long int valorBuscad
  *      ou -1 caso nao seja encontrado
  * 
  * | Exemplo de Uso |
- *      long int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+ *      int arr[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  *      buscaSequencialComParada(arr, 10, 5);
  *      (Return: 4)
  * 
  */
-int buscaSequencialComParada(long int *vetor, long int tam, long int valorBuscado);
+int buscaSequencialComParada(int *vetor, int tam, int valorBuscado);
+
+/*
+ * Funcao: Busca Sequencial Sentinela
+ * --------------------
+ * | Descricao |
+ *      Busca um determinado valor dentro de um array.
+ *      Forma otimizada da busca sequencial.
+ *      E necessario que o array possua uma posicao vazia no final.
+ *      Nao altera a complexidade do algoritmo, mas melhora a velocidade de busca
+ *      retirando a comparacao de dentro do laco.
+ * 
+ * | Parameters |
+ *      *vetor: Array de elementos a ser vasculhado
+ *      tam: Tamanho do array
+ *      valorBuscado: Valor a ser buscado dentro deste array
+ * 
+ * | returns |
+ *      Posicao do elemento buscado (caso seja encontrado), 
+ *      ou -1 caso nao seja encontrado
+ * 
+ * | Exemplo de Uso |
+ *      int arr[11] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0]; // A ultima posicao do array deve estar vazia nesse tipo de busca
+ *      buscaSequencialSentinela(arr, 11, 5);
+ *      (Return: 4)
+ * 
+ */
+int buscaSequencialSentinela(int *vetor, int tam, int valorBuscado);
 
 #endif

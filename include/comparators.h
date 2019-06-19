@@ -26,7 +26,6 @@
 #include <stdio.h>   // Necessaria para realizar operacoes importantes de entrada e saida de dados
 #include <stdlib.h>  // Necessaria para realizar operacoes com alocacao de memoria e ponteiros
 #include <string.h>  // Necessaria para manipulacao de Chars
-#include <locale.h>  // Necessaria para usar setlocale e acentuar palavras em printf's
 #include <stdbool.h> // Necessaria para usar tipo booleano, true e false
 
 /*
@@ -45,11 +44,35 @@
  * | Exemplo de Uso |
  *      int a = 15;
  *      int b = 10;
- *      comparadorInt(a, b);
+ *      comparadorDeInt(a, b);
  *      (Return: 5, ou seja, verdadeiro (valor positivo))
  * 
  */
 int comparadorDeInt(const void *a, const void *b);
+
+/*
+ * Funcao: Comparador de Floats
+ * --------------------
+ * | Descricao |
+ *      Compara dois numeros de ponto flutuante/floats.
+ * 
+ * | Parameters |
+ *      *a: float 1 a ser comparado
+ *      *b: float 2 a ser comparado
+ * 
+ * | returns |
+ *       1: se a for maior que b;
+ *      -1: se b for maior que a;
+ *       0: se forem iguais.
+ * 
+ * | Exemplo de Uso |
+ *      float a = 15.5;
+ *      float b = 18.5;
+ *      comparadorDeFloat(a, b);
+ *      (Return: -1)
+ * 
+ */
+int comparadorDeFloat(const void *a, const void *b);
 
 /*
  * Funcao: Comparador de Caracteres/String
@@ -69,7 +92,7 @@ int comparadorDeInt(const void *a, const void *b);
  * | Exemplo de Uso |
  *      char a = {"abc"};
  *      char b = {"bcd"};
- *      comparadorInt(a, b);
+ *      comparadorDeChar(a, b);
  *      (Return: a)
  * 
  */

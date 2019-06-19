@@ -18,10 +18,23 @@
 /* Biblioteca (.h) necessaria para as funcoes implementadas */
 #include "../include/comparators.h"
 
-int comparadorDeInt(const void *a, const void *b) {
-   return ( *(int*)a - *(int*)b );
+int comparadorDeInt(const void *a, const void *b)
+{
+   return (*(int *)a - *(int *)b);
 }
 
-int comparadorDeChar(const void *a, const void *b) {
-    return strcmp( (char*)a, (char*)b );
+int comparadorDeFloat(const void *a, const void *b)
+{
+   if (*(float *)a - *(float *)b > 0.0)
+      return 1;
+
+   else if (*(float *)a - *(float *)b < 0.0)
+      return -1;
+
+   return 0;
+}
+
+int comparadorDeChar(const void *a, const void *b)
+{
+   return strcmp((char *)a, (char *)b);
 }

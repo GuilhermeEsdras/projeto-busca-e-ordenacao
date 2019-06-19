@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "buscabin.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "sorts.h": "c",
+        "busca.h": "c"
     }
 }

@@ -25,13 +25,12 @@
 #include <stdio.h>   // Necessaria para realizar operacoes importantes de entrada e saida de dados
 #include <stdlib.h>  // Necessaria para realizar operacoes com alocacao de memoria e ponteiros
 #include <string.h>  // Necessaria para manipulacao de Chars
-#include <locale.h>  // Necessaria para usar setlocale e acentuar palavras em printf's
 #include <stdbool.h> // Necessaria para usar tipo booleano, true e false
 
 /* Estrutura que define um no de uma arvore  */
 typedef struct no
 {
-    int valor;            // Guarda o dado armazenado por esse no
+    int valor;            // Guarda o dado armazenado por esse No
     struct no *esq, *dir; // Guarda os enderecos dos "filhos" esquerdo e direito desse no
 } No;
 
@@ -299,9 +298,22 @@ No *insereNoDeBusca(ArvoreBin abb, int valor);
 int maiorValor(ArvoreBin arvore);
 int menorValor(ArvoreBin arvore);
 
-void imprimePreOrdem();
-void imprimeInOrdem();
-void imprimePosOrdem();
+/* Usado para encontrar o maior e menor valor respectivamente em uma Arvore Binaria de Busca 
+ onde os menores valores se encontram no lado esquerdo da arvore, e os maiores no lado direito da arvore */
+int maiorValorBin(ArvoreBin arvore);
+int menorValorBin(ArvoreBin arvore);
+
+int buscaPares(ArvoreBin arvore);
+int getAltura(ArvoreBin arvore);
+int diferencaDeAlturas(ArvoreBin arvore);
+
+int getTamanhoV1(ArvoreBin arvore);
+int getTamanhoV2(ArvoreBin arvore);
+
+void imprimePares(ArvoreBin arvore);
+void imprimePreOrdem(ArvoreBin arvore);
+void imprimeInOrdem(ArvoreBin arvore);
+void imprimePosOrdem(ArvoreBin arvore);
 
 /*
  * Funcao auxiliar usada para alocar um No*

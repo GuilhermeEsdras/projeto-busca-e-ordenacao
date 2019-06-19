@@ -26,7 +26,6 @@
 #include <stdio.h>   // Necessaria para realizar operacoes importantes de entrada e saida de dados
 #include <stdlib.h>  // Necessaria para realizar operacoes com alocacao de memoria e ponteiros
 #include <string.h>  // Necessaria para manipulacao de Chars
-#include <locale.h>  // Necessaria para usar setlocale e acentuar palavras em printf's
 #include <stdbool.h> // Necessaria para usar tipo booleano, true e false
 
 /*
@@ -62,7 +61,7 @@ void insertionSort(int *vetor, int tam);
  * Funcao: Merge Sort
  * --------------------
  * | Descricao |
- *      Ordena um array de inteiros usando o algoritmo Merge Sort.
+ *      Ordena um array de inteiros usando o algoritmo Merge Sort ou Ordenacao por Mistura.
  *      Sua ideia básica consiste em Dividir (o problema em vários subproblemas e 
  *      resolver esses subproblemas através da recursividade) e Conquistar 
  *      (após todos os subproblemas terem sido resolvidos ocorre a conquista que é 
@@ -88,7 +87,6 @@ void insertionSort(int *vetor, int tam);
  * 
  */
 void mergeSort(int *vetor, int inicio, int fim);
-
 /* Funcao Auxiliar do Merge Sort */
 void merge(int *vetor, int inicio, int meio, int fim);
 
